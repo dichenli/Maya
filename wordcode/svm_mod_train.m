@@ -11,7 +11,7 @@ function [model] = svm_mod_train(Xtrain, Ytrain)
     c = 0.0007;
 %     fprintf('Cross-val chose best C = %g\n', c);
 
-    model = svmtrain(Ytrain, Xtrain, sprintf('-t 5 -v 10 -c %g', c));
+    model = svmtrain(Ytrain, Xtrain, sprintf('-t 5 -c %g', c));
 end
 
 

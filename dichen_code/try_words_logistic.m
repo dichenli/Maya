@@ -34,6 +34,8 @@ test_size = size(Ytest, 1);
 
 %% glmnet
 options = glmnetSet;
+% options.standardize = false; % useless, it drops accuracy to 0.7891
+% options.alpha = 0; % dropped to 0.8238
 cvfit = cvglmnet(Xtrain, Ytrain, 'binomial', options, 'class');
 % figure(1);
 % cvglmnetPlot(cvfit);

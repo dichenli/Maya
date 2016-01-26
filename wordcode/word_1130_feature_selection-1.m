@@ -1,17 +1,9 @@
 clear; clc
-% load 'train_data.mat';
-img_test = importdata('../test/images_test.txt');
-img_feat_test = importdata('../test/image_features_test.txt');
-% word_test = importdata('../test/words_test.txt');
-img_train = importdata('../train/images_train.txt');
-img_feat_train = importdata('../train/image_features_train.txt');
-% word_train = importdata('../train/words_train.txt');
-% genders_train = importdata('../train/genders_train.txt');
-Y_train = genders_train;
+load 'train_data.mat';
 
-loop = 50;
-take = 1500;
-pick = 1000;
+loop = 40;
+take = 2500;
+pick = 2000;
 
 word_train_new = zscore(word_train);
 
@@ -24,8 +16,11 @@ for i = 1:loop
      
     model = LinearModel.fit(word1, Y1);
     coeff = model.Coefficients.Estimate;
+    coeff = coeff(2:end);
     [~, delete_Idx] = sort(abs(coeff));
     delete_total(i,:) = delete_Idx(1:take);
+    
+    i
 end
 
 M = tabulate(delete_total(:));

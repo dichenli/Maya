@@ -1,4 +1,5 @@
 function [test_err info] = kernel_libsvm(X, Y, Xtest, Ytest, kernel)
+addpath ./libsvm
 % Trains a SVM using libsvm and evaluates on test data.
 %
 % Usage:

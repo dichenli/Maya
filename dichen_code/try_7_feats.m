@@ -9,7 +9,7 @@ close all;
 % figure(1);
 % lassoPlot(B_lasso,FitInfo,'PlotType','CV');
 
-[B_lasso, FitInfo] = lasso( img_feat1, Y1, 'Lambda', 0.002); %0.002 was chosen from above
+[B_lasso, FitInfo] = lasso( img_feat1, Y1, 'Lambda', 0.002, 'alpha', 0.5); %0.002 was chosen from above
 X_test = img_feat2;
 Y_test = X_test * B_lasso + FitInfo.Intercept;
 predict_test = Y_test;
@@ -101,7 +101,7 @@ accuracy_test_lasso = sum(same, 1) ./ size(Y2, 1);
 % accuracy_test_logistic = size(diff(diff == 0), 1) / 1998;
 
 %% kmeans
-accuracy_kmeans = k_means(img_feat_train(1:3000, :), genders_train(1:3000, :), img_feat_train(3001:4998, :), genders_train(3001:4998, :), 100);
+% accuracy_kmeans = k_means(img_feat_train(1:3000, :), genders_train(1:3000, :), img_feat_train(3001:4998, :), genders_train(3001:4998, :), 100);
 
 
 

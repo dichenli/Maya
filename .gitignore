@@ -3,4 +3,4 @@
 *.mat
 train/*.txt
 test/*.txt
-
+*.zip

@@ -9,7 +9,7 @@ test_features = Xtest;
 % [B_lasso, FitInfo] = lasso( train_features, train_labels, 'CV', 10); %L1
 % figure(1);
 % lassoPlot(B_lasso,FitInfo,'PlotType','CV');
- 
+
 [B_lasso, FitInfo] = lasso( train_features, train_labels, 'Lambda', 0.001); %0.002 was chosen from above
 X_test = test_features;
 Y_test = X_test * B_lasso + FitInfo.Intercept;

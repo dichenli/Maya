@@ -4,5 +4,6 @@ function [ W, CV_error ] = trainLasso( X, Y )
     [B, FitInfo] = lasso(X, Y, 'CV', 10);
     W = B(:, size(B, 2)); % take the last column
     CV_error = FitInfo.MSE(size(FitInfo.MSE, 2));
+    lassoPlot(B,FitInfo,'PlotType','CV');
 end
 

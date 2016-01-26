@@ -17,13 +17,14 @@ addpath('glmnet_matlab');
 
 %% generate datasets
 load('../combination_idx.mat');
+load('pca_word.mat');
 word_train = word_score([idx_1; idx_2], :);
 word_test = word_score(idx_3, :);
 Ytrain = genders_train([idx_1; idx_2], :);
 Ytest = genders_train(idx_3, :);
 test_size = size(Ytest, 1);
 
-for dim = [400]
+for dim = [3000]
     Xtrain = word_train(:, 1:dim);
     Xtest = word_test(:, 1:dim);
     options = glmnetSet;

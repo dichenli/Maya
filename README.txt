@@ -1,26 +1,26 @@
-This directory has
+README
 
-the integer corresponding to each word (the same in train and test)
-   -- voc-top-5000.txt
-      note that "words" can contain commas and other odd symbols, but no whitespace
+Below are the training models we have tried: 
+(word_train are word training data, word_test are word test data, Y_train are labels of train data, etc.)
+Please make sure you have all data loaded. 
 
-code to visualize the images
-  --  show_images.m
+1. generative method: Naive Bayes to train word
+    
+    nb_predication = naive_bayes_word(word_train, Y_train, word_test);
 
-subdiretories with the training (n=4998) and test sets (n=4997)
+2. discriminative method: Logistic Regression to train word
 
-1) the outcome (1=female, 0=male) - only for the training
-   -- genders_*.txt
-2) how often each user used each of the 5,000 most frequent words
-   -- words_*.txt
-3) the raw images 100*100*RGB
-   -- images_*.txt
-4) a set of extracted features for each user's image
-   image_features_*.txt
+    logistic_predication = logistic_regression(Xtrain, Ytrain, Xtest);
+ 
+3. instance based method: knn regression to train word
 
-wher '*' is either train or test
+    knn_predication = knn_word(Xtrain, Ytrain, Xtest);
+ 
+4. our own regularization method: elastic net to train word
 
+    elasticnet_predication = elastic_net_img_feature(Xtrain, Ytrain, Xtest);
+ 
+5. semi-supervised dimensionality reduction: auto encoder, then use svm to train word
 
-
-
+    svm_predication = auto_encoder_svm_word(Xtrain, Ytrain, Xtest);
 
